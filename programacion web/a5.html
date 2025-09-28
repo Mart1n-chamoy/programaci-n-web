@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador con Incrementar y Decrementar</title>
+  <style>
+   
+    #contador {
+      font-size: 2em;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+    .incrementar {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .decrementar {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contador</h1>
+  <div id="contador">0</div>
+  <button class="incrementar" onclick="incrementar()">Incrementar</button>
+  <button class="decrementar" onclick="decrementar()">Decrementar</button>
+
+  <script>
+    let contador = 0; 
+
+    function renderizar() {
+      document.getElementById("contador").innerText = contador;
+    }
+
+    function incrementar() {
+      contador++;
+      renderizar();
+    }
+
+    function decrementar() {
+      contador--;
+      renderizar();
+    }
+  </script>
+</body>
+</html>

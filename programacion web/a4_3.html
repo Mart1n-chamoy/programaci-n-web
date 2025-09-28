@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A4_3</title>
+</head>
+<body>
+
+  <script>
+
+    const numeros = [3, 6, 9, 12, 15, 18];
+
+    const cubosPares = numeros
+      .filter(num => num % 2 === 0)
+      .map(num => num ** 3);
+
+    console.log("Cubos de números pares:", cubosPares);
+
+    const empleados = [
+      {nombre: "Ana", departamento: "Ventas"},
+      {nombre: "Luis", departamento: "IT"},
+      {nombre: "Marta", departamento: "Ventas"},
+      {nombre: "Pedro", departamento: "IT"},
+      {nombre: "Sofia", departamento: "Marketing"}
+    ];
+
+    const agrupados = empleados.reduce((acc, emp) => {
+      if (!acc[emp.departamento]) {
+        acc[emp.departamento] = [];
+      }
+      acc[emp.departamento].push(emp.nombre);
+      return acc;
+    }, {});
+
+    console.log("Empleados agrupados por departamento:", agrupados);
+  </script>
+</body>
+</html>

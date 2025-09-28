@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4_42</title>
+</head>
+<body>
+    <script>
+    const matriz = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
+    ];
+    const sumaFilas = matriz.map(fila => fila.reduce((a, b) => a + b, 0));
+    console.log("La suma de las filas es:", sumaFilas);
+    const sumaColumnas = Array(matriz[0].length).fill(0);
+    for (let fila of matriz) {
+      fila.forEach((valor, i) => {
+        sumaColumnas[i] += valor;
+      });
+    }
+    console.log("La suma de las columnas es:", sumaColumnas);
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>A4_443</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .done { text-decoration: line-through; background-color: #c8f7c5; }
+    li { margin: 5px 0; padding: 5px; list-style: none; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; }
+    button { margin-left: 5px; }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <input id="tareaInput" type="text" placeholder="Escribe una tarea...">
+  <button id="agregarBtn">Agregar</button>
+
+  <ul id="lista"></ul>
+
+  <h3>Registro de cambios en el DOM:</h3>
+  <pre id="log">Esperando cambios en el DOM...</pre>
+
+  <script>
+    
+const input = document.getElementById("tareaInput");
+const btn = document.getElementById("agregarBtn");
+const lista = document.getElementById("lista");
+const log = document.getElementById("log");
+
+// Agregar nueva tarea
+btn.addEventListener("click", () => {
+  const texto = input.value.trim();
+  if (texto === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = texto;
+
+  // Botón completar
+  const btnCheck = document.createElement("button");
+  btnCheck.textContent = "✅";
+  btnCheck.addEventListener("click", () => {
+    li.classList.toggle("done");
+  });
+
+  // Botón eliminar
+  const btnDelete = document.createElement("button");
+  btnDelete.textContent = "❌";
+  btnDelete.addEventListener("click", () => {
+    li.remove();
+  });
+
+  // Agregar botones al LI
+  li.appendChild(btnCheck);
+  li.appendChild(btnDelete);
+
+  lista.appendChild(li);
+  input.value = "";
+});
+
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    const tipo = mutation.type;
+    const target = mutation.target.nodeName;
+    log.textContent += `\nCambio: ${tipo} en ${target}`;
+  });
+});
+
+observer.observe(lista, {
+  childList: true,    
+  attributes: true,   
+  subtree: true       
+});
+
+  </script>
+</body>
+</html>

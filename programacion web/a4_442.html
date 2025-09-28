@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>4_442</title>
+</head>
+<body>
+
+  <script>
+    const usuarios = [
+      { nombre: "martin", clave: "123456" },
+      { nombre: "juan", clave: "323456" },
+      { nombre: "lucas", clave: "cebolla" },
+      { nombre: "tomas", clave: "hola123" },
+      { nombre: "matias", clave: "chau456" }
+    ];
+
+    console.log("Usuarios originales:");
+    console.log(usuarios);
+
+    const capitalizar = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+    const encriptar = clave => btoa(clave);
+
+    const usuariosProcesados = usuarios.map(user => ({
+      nombre: capitalizar(user.nombre),
+      clave: encriptar(user.clave)
+    }));
+
+    console.log("Usuarios procesados:");
+    console.log(usuariosProcesados);
+  </script>
+</body>
+</html>

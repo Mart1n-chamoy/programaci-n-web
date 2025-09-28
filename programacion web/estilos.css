@@ -1,0 +1,49 @@
+/* Estilo para el título */
+#titulo {
+  color: darkblue;
+  text-align: center;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+/* Estilo de la tabla */
+table {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para la caja */
+.caja {
+  border: 2px solid blue;
+  background-color: lightyellow;
+  padding: 15px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Estilo para la lista */
+ul {
+  list-style-type: square;
+  color: green;
+  font-size: 18px;
+  margin-left: 40px;
+}
+
+/* Estilo para los enlaces */
+a {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

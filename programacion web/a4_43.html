@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>A4_43</title>
+</head>
+<body>
+
+  <script>
+    const matriz = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
+    ];
+
+    function diagonales(m) {
+      const n = m.length;
+      const diagonalPrincipal = [];
+      const diagonalSecundaria = [];
+
+      for (let i = 0; i < n; i++) {
+        diagonalPrincipal.push(m[i][i]); 
+        diagonalSecundaria.push(m[i][n - 1 - i]); 
+      }
+
+      const suma = [...diagonalPrincipal, ...diagonalSecundaria]
+                   .reduce((a, b) => a + b, 0);
+
+      return { diagonalPrincipal, diagonalSecundaria, suma };
+    }
+
+    const resultado = diagonales(matriz);
+
+    console.log("La diagonal principal es:", resultado.diagonalPrincipal);
+    console.log("La diagonal secundaria es:", resultado.diagonalSecundaria);
+    console.log("La suma de ambas diagonales es:", resultado.suma);
+  </script>
+</body>
+</html>

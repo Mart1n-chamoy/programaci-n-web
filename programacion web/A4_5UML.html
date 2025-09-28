@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UML-Vehiculos</title>
+</head>
+<body>
+  <h1>UML Vehiculos</h1>
+
+  <script>
+    class RNA {
+  constructor(provincia) {
+    this.provincia = provincia;
+  }
+  info() {
+    return `RNA - Provincia: ${this.provincia}`;
+  }
+}
+
+
+class Titulo {
+  constructor(prop) {
+    this.prop = prop;
+  }
+}
+
+
+class Vehiculo {
+  constructor(marca, modelo, anio) {
+    this.velocidad = 0;
+    this.marca = marca;
+    this.modelo = modelo;
+    this.anio = anio;
+    this.ruedas = [];
+  }
+
+  acelerar(valor) {
+    this.velocidad += valor;
+  }
+
+  frenar(valor) {
+    this.velocidad = Math.max(0, this.velocidad - valor);
+  }
+
+  info() {
+    return `${this.marca} ${this.modelo} (${this.anio}) - Velocidad: ${this.velocidad} km/h`;
+  }
+
+  compararVelocidad(otroVehiculo) {
+    if (this.velocidad > otroVehiculo.velocidad) return `${this.modelo} es más rápido`;
+    if (this.velocidad < otroVehiculo.velocidad) return `${otroVehiculo.modelo} es más rápido`;
+    return "Ambos vehículos tienen la misma velocidad";
+  }
+
+  agregarRueda(rueda) {
+    this.ruedas.push(rueda);
+  }
+}
+
+
+class Auto extends Vehiculo {
+  constructor(marca, modelo, anio, cantPuertas) {
+    super(marca, modelo, anio);
+    this.cantPuertas = cantPuertas;
+  }
+
+  info() {
+    return super.info() + ` | Puertas: ${this.cantPuertas}`;
+  }
+}
+
+
+class Camion extends Vehiculo {
+  constructor(marca, modelo, anio, capacidadCarga) {
+    super(marca, modelo, anio);
+    this.capacidadCarga = capacidadCarga;
+  }
+
+  cargar(peso) {
+    return (peso > this.capacidadCarga)
+      ? "Carga excedida!"
+      : `Carga de ${peso} kg aceptada.`;
+  }
+
+  info() {
+    return super.info() + ` | Capacidad de carga: ${this.capacidadCarga} kg`;
+  }
+}
+
+
+class Rueda {
+  constructor(marca, rodaje) {
+    this.marca = marca;
+    this.rodaje = rodaje;
+  }
+}
+
+
+class Motor {
+  constructor(tipo, caballos, descripcion) {
+    this.tipo = tipo;
+    this.caballos = caballos;
+    this.descripcion = descripcion;
+  }
+}
+
+
+class Remolque {
+  constructor(longitud) {
+    this.longitud = longitud;
+  }
+}
+
+class Frigorifico extends Remolque {
+  constructor(longitud, temperatura) {
+    super(longitud);
+    this.temperatura = temperatura;
+  }
+}
+
+
+class Concesionario {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.vehiculos = [];
+  }
+
+  agregarVehiculo(vehiculo) {
+    this.vehiculos.push(vehiculo);
+  }
+}
+
+
+class Fabrica {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  construye(modelo) {
+    return `La fábrica ${this.nombre} construye el modelo ${modelo}`;
+  }
+}
+
+
+const auto1 = new Auto("Toyota", "Corolla", 2020, 4);
+auto1.acelerar(60);
+
+const camion1 = new Camion("Volvo", "FH16", 2018, 20000);
+camion1.acelerar(80);
+
+const concesionario = new Concesionario("SuperAutos");
+concesionario.agregarVehiculo(auto1);
+concesionario.agregarVehiculo(camion1);
+
+console.log(auto1.info());
+console.log(camion1.info());
+console.log(auto1.compararVelocidad(camion1));
+console.log(concesionario);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4_41</title>
+</head>
+<body>
+    <script>
+    const estudiantes = [
+      { nombre: "Ana", nota: 8 },
+      { nombre: "Luis", nota: 5 },
+      { nombre: "Carla", nota: 9 },
+      { nombre: "Juan", nota: 6 },
+      { nombre: "Pedro", nota: 4 }
+    ];
+
+    const aprobados = estudiantes
+      .filter(est => est.nota >= 6)
+      .map(est => est.nombre);
+    console.log("Los aprobados son:", aprobados);
+
+    estudiantes.sort((a, b) => b.nota - a.nota);
+    console.log("Notas ordenadas de mayor a menor:", estudiantes);
+
+    const promedio = estudiantes.reduce((suma, est) => suma + est.nota, 0) / estudiantes.length;
+    console.log("El promedio general es:", promedio);
+
+    </script>
+</body>
+</html>

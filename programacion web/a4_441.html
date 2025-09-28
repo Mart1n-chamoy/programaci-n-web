@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>4_441</title>
+</head>
+<body>
+
+    <script>
+        const libro = {
+            titulo: "El camino de sherlock",
+            autor: "Andrea Ferrari",
+            anio: 2015,
+            descripcion: function() {
+                return `${this.titulo}, escrito por ${this.autor} en ${this.anio}.`;
+            }
+        };
+
+        console.log("Libro:");
+        console.log(libro.descripcion());
+
+        const cuentaBancaria = {
+            titular: "Carlos Diaz",
+            saldo: 1000,
+            depositar: function(monto) {
+                this.saldo += monto;
+                return `Se depositaron $${monto} en la cuenta de ${cuentaBancaria.titular}. Saldo actual: $${this.saldo}`;
+            },
+            retirar: function(monto) {
+                if(monto > this.saldo) {
+                    return "Fondos insuficientes.";
+                }
+                this.saldo -= monto;
+                return `Se retiraron $${monto} de la cuenta de ${cuentaBancaria.titular}. Saldo actual: $${this.saldo}`;
+            }
+        };
+
+        console.log("Cuenta Bancaria:");
+        console.log(cuentaBancaria.depositar(500));
+        console.log(cuentaBancaria.retirar(300));
+        console.log(cuentaBancaria.retirar(1500));
+
+        const rectangulo = {
+            ancho: 5,
+            alto: 3,
+            area: function() {
+                return this.ancho * this.alto;
+            },
+            perimetro: function() {
+                return 2 * (this.ancho + this.alto);
+            }
+        };
+
+        console.log("Rectángulo:");
+        console.log(`Área: ${rectangulo.area()}`);
+        console.log(`Perímetro: ${rectangulo.perimetro()}`);
+    </script>
+</body>
+</html>
